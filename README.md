@@ -36,7 +36,7 @@ Este é um projeto de interface frontend para um sistema de compras online, dese
 
 1.  **Clone o Repositório:**
     ```bash
-    git clone <URL_DO_SEU_REPOSITORIO_GITHUB>
+    git clone https://github.com/Mickael-7/RocketStore.git
     cd rocketlab-store
     ```
 
