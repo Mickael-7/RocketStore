@@ -1,68 +1,104 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
+  box-sizing: border-box;
   min-height: 100vh;
+  background-color: var(--app-bg-color);
+  color: var(--app-text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+body.light-theme {
+  --app-bg-color: #f4f4f4;
+  --app-text-color: #333333; 
+
+  --navbar-bg: rgba(0, 77, 64, 0.85); 
+  --navbar-text-color: #ffffff;
+  --navbar-logo-color: #ffffff;
+  --navbar-icon-color: #ffffff; 
+  --navbar-item-count-bg: #e53e3e;
+  --navbar-item-count-text: #ffffff;
+
+  --hero-bg-color: #f0f4f8;
+  --hero-storename-color: #2c3e50;
+  --hero-tagline-color: #34495e;
+  --hero-description-color: #555555;
+
+  --products-title-color: #333333;
+  --footer-text-color: #777777;
+  --footer-border-color: #eeeeee;
+
+  --product-card-bg: #ffffff;
+  --product-card-shadow: rgba(0, 0, 0, 0.08);
+  --product-card-name-color: #333;
+  --product-card-price-color: #27ae60;
+  --product-card-stock-text-color: #777;
+  --product-card-button-bg: #68d391;
+  --product-card-button-text-color: #ffffff;
+  --product-card-unavailable-text-color: red;
+  --product-card-unavailable-bg: #f9f9f9;
+  --product-card-button-disabled-bg: #cccccc;
+  --product-card-button-disabled-text-color: #666666;
+
+  --product-detail-bg: #ffffff;
+  --product-detail-name-color: #2c3e50;
+  --product-detail-description-color: #555;
+  --product-detail-price-color: #27ae60;
+  --product-detail-stock-color: #777;
+  --product-detail-button-bg: #27ae60;
+  --product-detail-button-text-color: #ffffff;
+  --product-detail-button-disabled-bg: #cccccc;
+
+   --app-text-color: #333333;
+  --cart-item-price-text-color: #555555;
+  --cart-button-primary-bg:#27ae60;
+  --cart-button-secondary-bg:#27ae60;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+body.dark-theme {
+  --app-bg-color: #1a202c;
+  --app-text-color: #e2e8f0;
+  
+  --navbar-bg: rgba(20, 30, 28, 0.9); 
+  --navbar-text-color: #c8d8d5;
+  --navbar-logo-color: #e2e8f0;
+  --navbar-icon-color: #e2e8f0;
+  --navbar-item-count-bg: #c53030;
+  --navbar-item-count-text: #ffffff;
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+  --hero-bg-color: #2d3748;
+  --hero-storename-color: #90cdf4;
+  --hero-tagline-color: #a0aec0;
+  --hero-description-color: #cbd5e0;
+
+  --products-title-color: #e2e8f0;
+  --footer-text-color: #a0aec0;
+  --footer-border-color: #4a5568; 
+
+  --product-card-bg: #2d3748; 
+  --product-card-shadow: rgba(0, 0, 0, 0.4);
+  --product-card-name-color: #e2e8f0;
+  --product-card-price-color: #68d391;
+  --product-card-stock-text-color: #a0aec0;
+  --product-card-button-bg: #63b3ed; 
+  --product-card-button-text-color: #1a202c;
+  --product-card-unavailable-text-color: #fc8181;
+  --product-card-unavailable-bg: #4a5568;
+  --product-card-button-disabled-bg: #4a5568;
+  --product-card-button-disabled-text-color: #718096;
+
+  --product-detail-bg: #1a202c;
+  --product-detail-name-color: #90cdf4;
+  --product-detail-description-color: #cbd5e0;
+  --product-detail-price-color: #68d391;
+  --product-detail-stock-color: #a0aec0;
+  --product-detail-button-bg: #63b3ed;
+  --product-detail-button-text-color: #1a202c;
+  --product-detail-button-disabled-bg: #4a5568;
+
+   --app-text-color: #e2e8f0;
+  --cart-item-price-text-color: #a0aec0;
+  --cart-button-primary-bg:#63b3ed;
+  --cart-button-secondary-bg:#63b3ed;
+} 
