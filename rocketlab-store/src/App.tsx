@@ -1,35 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './contexts/CartContext';
+import Navbar from './components/layouts/Navbar';
+import HomePage from './pages/HomePage';
+import ProductDetailPage from './pages/ProductDetailPage';
+import CartPage from './pages/CartPage';
+import { initialProducts } from './data/products';
+import type { Product } from './types';
 
-function App() {
-  const [count, setCount] = useState(0)
+const globalStyles: React.CSSProperties = {
+  fontFamily: 'Arial, sans-serif',
+  margin: 0,
+  padding: 0,
+  boxSizing: 'border-box',
+  backgroundColor: '#f4f4f4',
+  minHeight: '100vh'
+};
+
+const mainContentStyles: React.CSSProperties = {
+  paddingTop: '60px',
+};
+
+const App: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>(initialProducts);
+
+  const updateProductStock = (productId: string, quantitySold: number) => {
+    setProducts(prevProducts =>
+      prevProducts.map(p =>
+        p.id === productId ? { ...p, stock: Math.max(0, p.stock - quantitySold) } : p
+      )
+    );
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <CartProvider> {}
+      <Router>
+        <div style={globalStyles}>
+          <Navbar />
+          <main style={mainContentStyles}>
+            <Routes>
+              <Route path="/" element={<HomePage products={products} />} />
+              <Route
+                path="/product/:productId"
+                element={<ProductDetailPage products={products} />}
+              />
+              <Route
+                path="/cart"
+                element={
+                  <CartPage
+                    products={products}
+                    updateProductStock={updateProductStock}
+                  />
+                }
+              />
+            </Routes>
+          </main>
+        </div>
+      </Router>
+    </CartProvider>
+  );
+};
 
-export default App
+export default App;
