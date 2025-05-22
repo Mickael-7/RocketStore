@@ -13,7 +13,6 @@ const globalStyles: React.CSSProperties = {
   margin: 0,
   padding: 0,
   boxSizing: 'border-box',
-  backgroundColor: '#f4f4f4',
   minHeight: '100vh'
 };
 
