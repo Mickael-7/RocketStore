@@ -23,18 +23,28 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products }) => {
   }, []);
 
   if (!product) {
-    return <div style={{ textAlign: 'center', padding: '2rem' }}>Produto não encontrado!</div>;
+    return <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--app-text-color)' }}>Produto não encontrado!</div>;
   }
 
   const itemInCart = cartItems.find(item => item.id === product.id);
   const availableStock = product.stock - (itemInCart?.quantity || 0);
 
-  const containerStyle: React.CSSProperties = {};
-  const contentWrapperBaseStyle: React.CSSProperties = {};
-  const imageBaseStyle: React.CSSProperties = {};
+  const contentWrapperBaseStyle: React.CSSProperties = {
+    display: 'flex', 
+    alignItems: 'flex-start', 
+  };
+  const imageBaseStyle: React.CSSProperties = { 
+    width: '100%',
+    maxWidth: '350px',
+    height: 'auto',
+    objectFit: 'cover',
+    borderRadius: '8px',
+  };
+
   const contentWrapperResponsiveStyle: React.CSSProperties = {
     ...contentWrapperBaseStyle,
     flexDirection: isDesktop ? 'row' : 'column',
+    alignItems: isDesktop ? 'flex-start' : 'center',
   };
   const imageResponsiveStyle: React.CSSProperties = {
     ...imageBaseStyle,
@@ -42,8 +52,82 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products }) => {
     marginRight: isDesktop ? '2rem' : '0',
   };
 
+  const pageContainerStyle: React.CSSProperties = {
+    maxWidth: '800px',
+    margin: '2rem auto',
+    padding: '2rem',
+    boxShadow: 'var(--product-card-shadow)', 
+    borderRadius: '8px',
+    backgroundColor: 'var(--product-detail-bg)',
+    transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
+  };
+
+  const productNameStyle: React.CSSProperties = {
+    fontSize: '2.5rem',
+    marginBottom: '1rem',
+    color: 'var(--product-detail-name-color)',
+    transition: 'color 0.3s ease',
+  };
+
+  const unavailableMessageStyle: React.CSSProperties = {
+    color: 'var(--product-card-unavailable-text-color)', 
+    marginBottom: '1rem',
+    display: 'flex',
+    alignItems: 'center',
+    fontWeight: 'bold',
+    transition: 'color 0.3s ease',
+  };
+
+  const stockTextStyle: React.CSSProperties = {
+    fontSize: '1rem',
+    color: 'var(--product-detail-stock-color)',
+    marginBottom: '0.5rem',
+    transition: 'color 0.3s ease',
+  };
+
+  const descriptionStyle: React.CSSProperties = {
+    fontSize: '1.2rem',
+    color: 'var(--product-detail-description-color)',
+    marginBottom: '1.5rem',
+    lineHeight: '1.6',
+    transition: 'color 0.3s ease',
+  };
+
+  const priceStyle: React.CSSProperties = {
+    fontSize: '1.8rem',
+    fontWeight: 'bold',
+    color: 'var(--product-detail-price-color)',
+    marginBottom: '1.5rem',
+    transition: 'color 0.3s ease',
+  };
+
+  const addButtonStyle: React.CSSProperties = {
+    backgroundColor: (product.stock > 0 && availableStock > 0)
+      ? 'var(--product-detail-button-bg)'
+      : 'var(--product-detail-button-disabled-bg)',
+    color: (product.stock > 0 && availableStock > 0)
+      ? 'var(--product-detail-button-text-color)'
+      : 'var(--product-card-button-disabled-text-color)',
+    border: 'none',
+    padding: '1rem 1.5rem',
+    borderRadius: '5px',
+    cursor: (product.stock > 0 && availableStock > 0) ? 'pointer' : 'not-allowed',
+    fontSize: '1.1rem',
+    display: 'flex',
+    alignItems: 'center',
+    opacity: (product.stock > 0 && availableStock > 0) ? 1 : 0.7,
+    transition: 'background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease',
+  };
+
+  const warningTextStyle: React.CSSProperties = {
+    color: 'var(--warning-text-color, orange)',
+    fontSize: '0.9rem',
+    marginTop: '0.5rem',
+    transition: 'color 0.3s ease',
+  };
+
   return (
-    <div style={{ maxWidth: '800px', margin: '2rem auto', padding: '2rem', boxShadow: '0 4px 8px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
+    <div style={pageContainerStyle}>
       <div style={contentWrapperResponsiveStyle}>
         <img
           src={product.imageUrl}
@@ -51,45 +135,34 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products }) => {
           style={imageResponsiveStyle}
         />
         <div>
-          <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{product.name}</h1>
+          <h1 style={productNameStyle}>{product.name}</h1>
           {product.stock === 0 ? (
-            <div style={{ color: 'red', marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+            <div style={unavailableMessageStyle}>
               <AlertTriangle size={20} style={{ marginRight: '0.5rem' }} />
               Produto Indisponível
             </div>
           ) : (
-            <p style={{ fontSize: '1rem', color: '#777', marginBottom: '0.5rem' }}>
+            <p style={stockTextStyle}>
               Em estoque: {product.stock} unidades
             </p>
           )}
-          <p style={{ fontSize: '1.2rem', color: '#555', marginBottom: '1.5rem' }}>{product.description}</p>
-          <p style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#27ae60', marginBottom: '1.5rem' }}>
+          <p style={descriptionStyle}>{product.description}</p>
+          <p style={priceStyle}>
             R$ {product.price.toFixed(2)}
           </p>
           <button
             onClick={() => addToCart(product as Product)}
-            style={{
-              backgroundColor: product.stock > 0 && availableStock > 0 ? '#e67e22' : '#cccccc',
-              color: 'white',
-              border: 'none',
-              padding: '1rem 1.5rem',
-              borderRadius: '5px',
-              cursor: product.stock > 0 && availableStock > 0 ? 'pointer' : 'not-allowed',
-              fontSize: '1.1rem',
-              display: 'flex',
-              alignItems: 'center',
-              opacity: product.stock > 0 && availableStock > 0 ? 1 : 0.7,
-            }}
+            style={addButtonStyle}
             disabled={product.stock === 0 || availableStock <= 0}
           >
             <ShoppingBag size={22} style={{ marginRight: '0.7rem' }} />
             {product.stock > 0 && availableStock > 0 ? "Adicionar ao Carrinho" : "Produto Indisponível"}
           </button>
-           {availableStock <= 0 && product.stock > 0 && (
-             <p style={{ color: 'orange', fontSize: '0.9rem', marginTop: '0.5rem' }}>
-               Você já adicionou todo o estoque disponível ao carrinho.
-             </p>
-           )}
+          {availableStock <= 0 && product.stock > 0 && (
+            <p style={warningTextStyle}>
+              Você já adicionou todo o estoque disponível ao carrinho.
+            </p>
+          )}
         </div>
       </div>
     </div>
