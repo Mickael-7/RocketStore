@@ -89,7 +89,7 @@ body.light-theme {
   --search-input-icon-color: var(--searchbar-icon-color);
   --search-button-bg: var(--product-card-button-bg); 
   --search-button-text-color: var(--product-card-button-text-color);
-  --active-filter-bg: rgba(52, 152, 219, 0.2); 
+  --active-filter-bg: #2ecc701e; 
   --active-filter-text-color: var(--product-card-button-bg); 
   --filter-card-bg: var(--product-card-bg);
   --filter-card-border-color: var(--cart-item-border-color);
