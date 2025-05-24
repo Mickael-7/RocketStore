@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams} from 'react-router-dom';
 import type { Product, SearchPageFilters } from '../types'; 
 import { initialProducts } from '../data/products';
 import ProductCard from '../components/product/ProductCard';
@@ -13,9 +13,8 @@ interface SearchPageProps {
 
 const SearchPage: React.FC<SearchPageProps> = () => {
   const [searchParams, setSearchParams] = useSearchParams(); 
-  const navigate = useNavigate(); 
 
-  const [allProducts, setAllProducts] = useState<Product[]>(initialProducts);
+  const [allProducts,] = useState<Product[]>(initialProducts);
   const [loading, setLoading] = useState(false); 
 
   const [searchQueryInPage, setSearchQueryInPage] = useState(searchParams.get("q") || "");
@@ -200,9 +199,6 @@ const SearchPage: React.FC<SearchPageProps> = () => {
       gridTemplateColumns: isDesktop ? '300px 1fr' : '1fr',
   };
 
-
-  const loadingStyle: React.CSSProperties = {};
-  const noResultsCardStyle: React.CSSProperties = {};
   const resultsGridStyle: React.CSSProperties = {
     display: 'grid',
     gap: '5px',

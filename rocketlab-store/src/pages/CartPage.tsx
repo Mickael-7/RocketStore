@@ -10,7 +10,7 @@ interface CartPageProps {
   updateProductStock: (productId: string, quantitySold: number) => void; 
 }
 
-const CartPage: React.FC<CartPageProps> = ({ products, updateProductStock }) => { 
+const CartPage: React.FC<CartPageProps> = ({ products}) => { 
   const { cartItems, getCartTotal, getItemCount } = useCart(); 
   const navigate = useNavigate();
   const total = getCartTotal();

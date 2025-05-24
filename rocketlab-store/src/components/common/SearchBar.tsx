@@ -64,19 +64,6 @@ const SearchBar: React.FC = () => {
     transition: 'background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease',
   };
 
-
-  const srOnlyStyle: React.CSSProperties = {
-    position: 'absolute',
-    width: '1px',
-    height: '1px',
-    padding: 0,
-    margin: '-1px',
-    overflow: 'hidden',
-    clip: 'rect(0, 0, 0, 0)',
-    whiteSpace: 'nowrap',
-    borderWidth: 0,
-  };
-
   return (
     <form onSubmit={handleSubmit} style={formStyle}>
       <div style={inputWrapperStyle}>
