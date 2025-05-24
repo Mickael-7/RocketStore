@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ShoppingCart, Sun, Moon } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
 import { useTheme } from '../../contexts/ThemeContext';
+import SearchBar from '../common/SearchBar';
 
 const Navbar: React.FC = () => {
   const { getItemCount } = useCart();
@@ -75,6 +76,7 @@ const Navbar: React.FC = () => {
       <Link to="/" style={logoStyle}>
         RocketStore
       </Link>
+      <SearchBar />
       <div style={rightNavItemsStyle}> {}
         <button
           onClick={toggleTheme}
