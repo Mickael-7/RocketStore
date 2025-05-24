@@ -50,10 +50,58 @@ body.light-theme {
   --product-detail-button-text-color: #ffffff;
   --product-detail-button-disabled-bg: #cccccc;
 
-   --app-text-color: #333333;
+  --app-text-color: #333333;
   --cart-item-price-text-color: #555555;
   --cart-button-primary-bg:#27ae60;
   --cart-button-secondary-bg:#27ae60;
+
+  --checkout-label-color: #374151;
+  --checkout-input-bg: #ffffff;
+  --checkout-input-border-color: #d1d5db;
+  --checkout-input-text-color: var(--app-text-color);
+  --checkout-input-focus-border-color: var(--product-card-button-bg); 
+  --checkout-section-title-color: var(--hero-storename-color);
+  --checkout-separator-color: var(--footer-border-color);
+  --checkout-summary-card-bg: #f9fafb; 
+  --checkout-summary-card-border-color: var(--footer-border-color);
+  --checkout-summary-title-color: var(--hero-storename-color);
+  --checkout-summary-text-color: var(--app-text-color);
+  --checkout-summary-muted-text-color: #6b7280;
+  --checkout-button-primary-bg: var(--cart-button-primary-bg, #2ecc71);
+  --checkout-button-primary-text: var(--cart-button-primary-text, white);
+  --checkout-button-disabled-bg: var(--product-card-button-disabled-bg, #cccccc);
+
+  --searchbar-input-bg: #ffffff;
+  --searchbar-input-text-color: var(--app-text-color);
+  --searchbar-input-border-color: #d1d5db; 
+  --searchbar-input-placeholder-color: #9ca3af; 
+  --searchbar-icon-color: #6b7280; 
+  --searchbar-button-bg: transparent; 
+  --searchbar-button-border-color: #d1d5db;
+  --searchbar-button-icon-color: #ffffff;
+  --searchbar-button-hover-bg: #f3f4f6; 
+  --searchbar-button-hover-icon-color: #4b5563;
+
+  --search-page-title-color: var(--hero-storename-color);
+  --search-input-bg: var(--searchbar-input-bg); 
+  --search-input-border-color: var(--searchbar-input-border-color);
+  --search-input-text-color: var(--searchbar-input-text-color);
+  --search-input-icon-color: var(--searchbar-icon-color);
+  --search-button-bg: var(--product-card-button-bg); 
+  --search-button-text-color: var(--product-card-button-text-color);
+  --active-filter-bg: rgba(52, 152, 219, 0.2); 
+  --active-filter-text-color: var(--product-card-button-bg); 
+  --filter-card-bg: var(--product-card-bg);
+  --filter-card-border-color: var(--cart-item-border-color);
+  --filter-title-color: var(--hero-storename-color);
+  --filter-label-color: var(--checkout-label-color);
+  --filter-select-bg: var(--checkout-input-bg);
+  --filter-select-border-color: var(--checkout-input-border-color);
+  --filter-select-text-color: var(--checkout-input-text-color);
+  --muted-text-color: var(--checkout-summary-muted-text-color);
+  --spinner-color: var(--product-card-button-bg);
+  --search-clear-button-text-color: var(--muted-text-color);
+  --search-clear-button-hover-text-color: var(--app-text-color);
 }
 
 body.dark-theme {
@@ -97,8 +145,56 @@ body.dark-theme {
   --product-detail-button-text-color: #1a202c;
   --product-detail-button-disabled-bg: #4a5568;
 
-   --app-text-color: #e2e8f0;
+  --app-text-color: #e2e8f0;
   --cart-item-price-text-color: #a0aec0;
   --cart-button-primary-bg:#63b3ed;
   --cart-button-secondary-bg:#63b3ed;
+
+  --checkout-label-color: #9ca3af;
+  --checkout-input-bg: #374151;
+  --checkout-input-border-color: #4b5563;
+  --checkout-input-text-color: var(--app-text-color);
+  --checkout-input-focus-border-color: var(--product-card-price-color);
+  --checkout-section-title-color: var(--hero-storename-color);
+  --checkout-separator-color: var(--footer-border-color);
+  --checkout-summary-card-bg: #1f2937; 
+  --checkout-summary-card-border-color: #374151;
+  --checkout-summary-title-color: var(--hero-storename-color);
+  --checkout-summary-text-color: var(--app-text-color);
+  --checkout-summary-muted-text-color: #9ca3af;
+  --checkout-button-primary-bg: var(--cart-button-primary-bg, #38a169);
+  --checkout-button-primary-text: var(--cart-button-primary-text, white);
+  --checkout-button-disabled-bg: var(--product-card-button-disabled-bg, #4a5568);
+
+  --searchbar-input-bg: #374151;
+  --searchbar-input-text-color: var(--app-text-color);
+  --searchbar-input-border-color: #4b5563; 
+  --searchbar-input-placeholder-color: #9ca3af; 
+  --searchbar-icon-color: #9ca3af; 
+  --searchbar-button-bg: transparent; 
+  --searchbar-button-border-color: #4b5563;
+  --searchbar-button-icon-color: #9ca3af;
+  --searchbar-button-hover-bg: #4b5563;
+  --searchbar-button-hover-icon-color: #e5e7eb;
+
+  --search-page-title-color: var(--hero-storename-color);
+  --search-input-bg: var(--searchbar-input-bg);
+  --search-input-border-color: var(--searchbar-input-border-color);
+  --search-input-text-color: var(--searchbar-input-text-color);
+  --search-input-icon-color: var(--searchbar-icon-color);
+  --search-button-bg: #63b3ed;
+  --search-button-text-color: var(--searchbar-input-bg);
+  --active-filter-bg: #63b3ed58; 
+  --active-filter-text-color: #63b3ed;
+  --filter-card-bg: var(--product-card-bg);
+  --filter-card-border-color: var(--cart-item-border-color);
+  --filter-title-color: var(--hero-storename-color);
+  --filter-label-color: var(--checkout-label-color);
+  --filter-select-bg: var(--checkout-input-bg);
+  --filter-select-border-color: var(--checkout-input-border-color);
+  --filter-select-text-color: var(--checkout-input-text-color);
+  --muted-text-color: var(--checkout-summary-muted-text-color);
+  --spinner-color:#63b3ed;
+  --search-clear-button-text-color: #63b3ed;
+  --search-clear-button-hover-text-color: #63b3ed;
 } 

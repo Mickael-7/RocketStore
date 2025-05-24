@@ -1,4 +1,3 @@
-// src/pages/HomePage.tsx
 import React from 'react';
 import ProductList from '../components/product/ProductList';
 import type { Product } from '../types';
@@ -9,26 +8,26 @@ interface HomePageProps {
 
 const HomePage: React.FC<HomePageProps> = ({ products }) => {
   const heroSectionStyle: React.CSSProperties = {
-    backgroundColor: 'var(--hero-bg-color)', // USA VARIÁVEL
+    backgroundColor: 'var(--hero-bg-color)', 
     padding: '3rem 1.5rem',
     textAlign: 'center',
     marginBottom: '3rem',
     borderRadius: '8px',
-    boxShadow: 'var(--product-card-shadow)', // Pode usar uma variável de sombra também
+    boxShadow: 'var(--product-card-shadow)', 
     transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
   };
 
   const storeNameStyle: React.CSSProperties = {
     fontSize: '2.8rem',
     fontWeight: 'bold',
-    color: 'var(--hero-storename-color)', // USA VARIÁVEL
+    color: 'var(--hero-storename-color)', 
     marginBottom: '1rem',
     transition: 'color 0.3s ease',
   };
 
   const taglineStyle: React.CSSProperties = {
     fontSize: '1.3rem',
-    color: 'var(--hero-tagline-color)', // USA VARIÁVEL
+    color: 'var(--hero-tagline-color)', 
     marginBottom: '1.5rem',
     maxWidth: '650px',
     margin: '0 auto 1.5rem auto',
@@ -38,7 +37,7 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
 
   const descriptionParagraphStyle: React.CSSProperties = {
     fontSize: '1rem',
-    color: 'var(--hero-description-color)', // USA VARIÁVEL
+    color: 'var(--hero-description-color)',
     maxWidth: '650px',
     margin: '0 auto',
     lineHeight: '1.6',
@@ -48,7 +47,7 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
   const productsTitleStyle: React.CSSProperties = {
     textAlign: 'center',
     fontSize: '2.2rem',
-    color: 'var(--products-title-color)', // USA VARIÁVEL
+    color: 'var(--products-title-color)',
     margin: '3rem 0 1.5rem 0',
     paddingBottom: '0.5rem',
     transition: 'color 0.3s ease',
@@ -58,9 +57,9 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
     textAlign: 'center',
     padding: '2rem 1rem',
     marginTop: '4rem',
-    color: 'var(--footer-text-color)', // USA VARIÁVEL
+    color: 'var(--footer-text-color)', 
     fontSize: '0.9rem',
-    borderTop: '1px solid var(--footer-border-color)', // USA VARIÁVEL
+    borderTop: '1px solid var(--footer-border-color)', 
     transition: 'color 0.3s ease, border-color 0.3s ease',
   };
 
@@ -80,7 +79,7 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
       <h2 style={productsTitleStyle}>
         Nossos Produtos Mais Quentes 🔥
       </h2>
-      <ProductList products={products} /> {/* ProductList também precisará ser refatorado internamente */}
+      <ProductList products={products} /> {}
 
       <footer style={footerStyle}>
         <p style={{ margin: 0 }}>
