@@ -7,6 +7,9 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import CartPage from './pages/CartPage';
 import { initialProducts } from './data/products';
 import type { Product } from './types';
+import CheckoutPage from './pages/CheckoutPage';
+import CheckoutSuccessPage from './pages/CheckoutSucessPage';
+import SearchPage from './pages/SearchPages';
 
 const globalStyles: React.CSSProperties = {
   fontFamily: 'Arial, sans-serif',
@@ -52,6 +55,20 @@ const App: React.FC = () => {
                   />
                 }
               />
+              <Route 
+                path="/checkout"
+                element={
+                  <CheckoutPage
+                    products={products}
+                    updateProductStock={updateProductStock}
+                  />
+                }
+              />
+              <Route
+                path="/checkout/sucesso"
+                element={<CheckoutSuccessPage />}
+              />
+              <Route path="/pesquisa" element={<SearchPage />} />
             </Routes>
           </main>
         </div>
