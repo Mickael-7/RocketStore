@@ -2,6 +2,9 @@
 
 Este é um projeto de interface frontend para um sistema de compras online, desenvolvido como parte da Atividade Frontend da Rocketlab DEV. O sistema permite aos usuários visualizar uma lista de produtos, ver detalhes de um produto específico, adicionar e remover produtos de um carrinho de compras virtual, e visualizar o valor total do carrinho. 
 
+# Deploy
+https://rocket-store-beta.vercel.app/
+
 ## Tecnologias Utilizadas
 
 * **React:** Biblioteca JavaScript para construção de interfaces de usuário.
