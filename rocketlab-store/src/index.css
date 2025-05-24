@@ -71,7 +71,7 @@ body.light-theme {
   --checkout-button-primary-text: var(--cart-button-primary-text, white);
   --checkout-button-disabled-bg: var(--product-card-button-disabled-bg, #cccccc);
 
-  --searchbar-input-bg: #ffffff;
+  --searchbar-input-bg: #ffffffa9;
   --searchbar-input-text-color: var(--app-text-color);
   --searchbar-input-border-color: #d1d5db; 
   --searchbar-input-placeholder-color: #9ca3af; 
@@ -166,7 +166,7 @@ body.dark-theme {
   --checkout-button-primary-text: var(--cart-button-primary-text, white);
   --checkout-button-disabled-bg: var(--product-card-button-disabled-bg, #4a5568);
 
-  --searchbar-input-bg: #374151;
+  --searchbar-input-bg: #37415135;
   --searchbar-input-text-color: var(--app-text-color);
   --searchbar-input-border-color: #4b5563; 
   --searchbar-input-placeholder-color: #9ca3af; 
