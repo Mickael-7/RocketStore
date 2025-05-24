@@ -260,7 +260,7 @@ const SearchPage: React.FC<SearchPageProps> = () => {
           ) : (
             <>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                <p style={{ fontSize: '0.9rem', color: 'var(--muted-text-color)'}}>
+                <p style={{ fontSize: '0.9rem', color: 'var(--muted-text-color)',marginLeft:'15px'}}>
                   {filteredAndSortedProducts.length} produto{filteredAndSortedProducts.length !== 1 ? "s" : ""} encontrado{filteredAndSortedProducts.length !== 1 ? "s" : ""}
                 </p>
                 {}
