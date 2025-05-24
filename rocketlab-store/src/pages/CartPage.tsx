@@ -1,22 +1,29 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
-import CartItemCard from '../components/cart/CartItemCard'; 
+import CartItemCard from '../components/cart/CartItemCard';
 import { CreditCard, PackageCheck } from 'lucide-react';
 import type { Product } from '../types';
 
 interface CartPageProps {
-  products: Product[];
-  updateProductStock: (productId: string, quantitySold: number) => void;
+  products: Product[]; 
+  updateProductStock: (productId: string, quantitySold: number) => void; 
 }
 
-const CartPage: React.FC<CartPageProps> = ({ products, updateProductStock }) => {
-  const { cartItems, getCartTotal, clearCart, getItemCount } = useCart();
+const CartPage: React.FC<CartPageProps> = ({ products, updateProductStock }) => { 
+  const { cartItems, getCartTotal, getItemCount } = useCart(); 
   const navigate = useNavigate();
   const total = getCartTotal();
   const itemCount = getItemCount();
 
-  const handleCheckout = () => {
+
+  const handleNavigateToCheckout = () => {
+    if (itemCount === 0) {
+      alert("Seu carrinho está vazio!");
+      return;
+    }
+
+
     let canProceed = true;
     for (const item of cartItems) {
       const productInStock = products.find(p => p.id === item.id);
@@ -28,17 +35,13 @@ const CartPage: React.FC<CartPageProps> = ({ products, updateProductStock }) => 
     }
 
     if (!canProceed) {
-      return;
+      return; 
     }
 
-    cartItems.forEach(item => {
-      updateProductStock(item.id, item.quantity);
-    });
 
-    alert('Compra finalizada com sucesso! (Simulação)');
-    clearCart();
-    navigate('/');
+    navigate('/checkout');
   };
+
 
   const emptyCartContainerStyle: React.CSSProperties = {
     textAlign: 'center',
@@ -58,13 +61,13 @@ const CartPage: React.FC<CartPageProps> = ({ products, updateProductStock }) => 
 
   const emptyCartTextStyle: React.CSSProperties = {
     marginBottom: '1rem',
-    color: 'var(--cart-empty-text-color, var(--app-text-color))', 
+    color: 'var(--cart-empty-text-color, var(--app-text-color))',
     transition: 'color 0.3s ease',
   };
 
   const emptyCartButtonStyle: React.CSSProperties = {
-    backgroundColor: 'var(--cart-button-secondary-bg)', 
-    color: 'var(--cart-button-secondary-text, white)', 
+    backgroundColor: 'var(--cart-button-secondary-bg)',
+    color: 'var(--cart-button-secondary-text, white)',
     border: 'none',
     padding: '0.8rem 1.5rem',
     borderRadius: '5px',
@@ -79,15 +82,16 @@ const CartPage: React.FC<CartPageProps> = ({ products, updateProductStock }) => 
     padding: '2rem',
     backgroundColor: 'var(--cart-page-bg, var(--product-card-bg))',
     borderRadius: '8px',
-    boxShadow: 'var(--product-card-shadow)', 
+    boxShadow: 'var(--product-card-shadow)',
     transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
   };
 
   const cartTitleStyle: React.CSSProperties = {
     textAlign: 'center',
     marginBottom: '2rem',
-    color: 'var(--cart-title-color, var(--products-title-color))', 
+    color: 'var(--cart-title-color, var(--products-title-color))',
     transition: 'color 0.3s ease',
+    fontSize: '2rem', 
   };
 
   const summarySectionStyle: React.CSSProperties = {
@@ -121,15 +125,17 @@ const CartPage: React.FC<CartPageProps> = ({ products, updateProductStock }) => 
     fontSize: '1.1rem',
     display: 'flex',
     alignItems: 'center',
+    fontWeight: '600', 
     transition: 'background-color 0.3s ease, color 0.3s ease',
   };
+
 
 
   if (itemCount === 0) {
     return (
       <div style={emptyCartContainerStyle}>
         <PackageCheck size={60} style={emptyCartIconStyle} />
-        <h2 style={emptyCartTextStyle}>Seu carrinho está vazio!</h2>
+        <h2 style={{...emptyCartTextStyle, fontSize: '1.5rem'}}>Seu carrinho está vazio!</h2> {}
         <p style={{ ...emptyCartTextStyle, marginBottom: '1.5rem' }}>Adicione produtos para vê-los aqui.</p>
         <button
           onClick={() => navigate('/')}
@@ -154,11 +160,11 @@ const CartPage: React.FC<CartPageProps> = ({ products, updateProductStock }) => 
           Total: <span style={totalAmountStyle}>R$ {total.toFixed(2)}</span>
         </h3>
         <button
-          onClick={handleCheckout}
+          onClick={handleNavigateToCheckout} 
           style={checkoutButtonStyle}
         >
           <CreditCard size={20} style={{ marginRight: '0.7rem' }} />
-          Finalizar Compra
+          Ir para Pagamento {}
         </button>
       </div>
     </div>
